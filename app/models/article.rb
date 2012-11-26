@@ -333,10 +333,12 @@ class Article < Content
   def merge_with(other_article_id)
     other_article = Article.find(other_article_id)
     new_body = self.body + other_article.body
-    merged_article = Article.create(body: new_body)
-    self.user.articles << merged_article
+    new_title = "[merged] #{self.title} #{other_article.title}"
+    merged_article = Article.create(body: new_body, title: new_title)
+    #self.user.articles << merged_article
+    merged_article.save
     puts merged_article
-    self.user.save
+    merged_article
   end
   
   def keywords_to_tags

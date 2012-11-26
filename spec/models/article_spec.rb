@@ -436,6 +436,25 @@ describe Article do
       end
     end
   end
+  
+  describe '.merge_with' do
+    before :all do
+      @article_1 = Article.create!(body: 'hello world', title: "word up")
+      @article_2 = Article.create!(body: 'It is I and you are you.', title: "no")
+    end
+    after :all do
+      Article.delete_all
+    end
+    it 'should merge two articles into a new 3rd article' do
+      merged = @article_1.merge_with(@article_2.id)
+      Article.all.length.should == 3
+    end
+    it 'should merge text from both articles' do
+      merged = @article_1.merge_with(@article_2.id)
+      merged.body.should =~ /hello world/
+      merged.body.should =~ /It is I and you are you./
+    end
+  end
 
   describe 'body_and_extended=' do
     before :each do
