@@ -67,4 +67,11 @@ class ApplicationController < ActionController::Base
   def this_blog
     @blog ||= Blog.default
   end
+  
+  def is_admin
+    unless current_user.admin?
+      flash[:error] = 'You do not have permission to do that.' 
+      redirect_to(root_path)
+    end
+  end
 end

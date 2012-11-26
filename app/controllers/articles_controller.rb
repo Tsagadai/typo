@@ -1,7 +1,8 @@
 class ArticlesController < ContentController
-  before_filter :login_required, :only => [:preview]
+  before_filter :login_required, :only => [:preview, :merge]
   before_filter :auto_discovery_feed, :only => [:show, :index]
   before_filter :verify_config
+  before_filter :is_admin, only: [:merge]
 
   layout :theme_layout, :except => [:comment_preview, :trackback]
 
@@ -72,7 +73,8 @@ class ArticlesController < ContentController
   end
   
   def merge
-    
+    @article = Article.first
+    redirect_to "/admin/content"
   end
   
   def check_password
