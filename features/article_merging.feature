@@ -6,12 +6,13 @@ Feature: Article merging
   Scenario: A non-admin cannot merge articles.
     Given the blog is set up
     And I am a regular user
-    When I visit the first article
-    Then I should see "Merge Articles"
-    When I fill in "Article ID" with "something"
-    And I press "Merge"
+    When I send a merge request
     Then I should see "You are not permitted to do that"
   Scenario: When articles are merged, the merged article should contain the text of both previous articles.
+    Given the blog is set up
+    When I edit the first article
+    Then I should be on the edit article page
+    
   Scenario: When articles are merged, the merged article should have one author (either one of the authors of the two original articles).
   Scenario: Comments on each of the two original articles need to all carry over and point to the new, merged article.
   Scenario: The title of the new article should be the title from either one of the merged articles.

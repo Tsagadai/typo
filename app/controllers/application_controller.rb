@@ -70,8 +70,8 @@ class ApplicationController < ActionController::Base
   
   def is_admin
     unless current_user.admin?
-      flash[:error] = 'You do not have permission to do that.' 
-      redirect_to(root_path)
+      flash[:notice] = 'You do not have permission to do that.' 
+      redirect_to '/'
     end
   end
 end

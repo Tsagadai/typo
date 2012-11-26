@@ -332,8 +332,10 @@ class Article < Content
   # merging articles together
   def merge_with(other_article_id)
     other_article = Article.find(other_article_id)
-    merged_article = Aricle.create(body: self.body + other_article .body)
+    new_body = self.body + other_article.body
+    merged_article = Article.create(body: new_body)
     self.user.articles << merged_article
+    puts merged_article
     self.user.save
   end
   

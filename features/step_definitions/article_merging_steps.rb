@@ -11,6 +11,6 @@ Given /^I am a regular user$/ do
                 :state => 'active'})
 end
 
-When /^I visit the first article$/ do
-  visit("/admin/content/edit/#{Article.first.id}")
+When /^I send a merge request$/ do
+  post "/admin/article/merge", article_id: "Foo", merge_with: "Bar"
 end
