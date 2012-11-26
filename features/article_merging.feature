@@ -7,7 +7,7 @@ Feature: Article merging
     Given the blog is set up
     And I am a regular user
     When I visit the first article
-    Then I should see "Merge articles"
+    Then I should see "Merge Articles"
     When I fill in "Article ID" with "something"
     And I press "Merge"
     Then I should see "You are not permitted to do that"

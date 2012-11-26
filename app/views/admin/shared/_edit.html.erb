@@ -8,7 +8,7 @@
 <div class='merge'>
   <%= form_tag "/admin/article/merge" do %>
     <input type="hidden" name="article_id" value="<%=@article.id%>">
-    <h3>Merge articles</h3>
+    <h3>Merge Articles</h3>
     <label for="merge_with">Article ID:</label>
     <% if current_user.admin? %>
       <input type="text" name="merge_with" value="">
