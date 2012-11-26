@@ -443,7 +443,8 @@ describe Article do
       @article_2 = Article.create!(body: 'It is I and you are you.', title: "no")
     end
     after :all do
-      Article.delete_all
+      @article_1.delete
+      @article_2.delete
     end
     it 'should merge two articles into a new 3rd article' do
       merged = @article_1.merge_with(@article_2.id)

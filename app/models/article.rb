@@ -334,9 +334,9 @@ class Article < Content
     other_article = Article.find(other_article_id)
     new_body = self.body + other_article.body
     new_title = self.title or other_article.title
-    author = self.user.id or other_article.user.id
+    author = self.user.author or other_article.user.author
     comments = self.comments.all + other_article.comments.all
-    merged_article = Article.create!(body: new_body, title: new_title, user_id: author)
+    merged_article = Article.create!(body: new_body, title: new_title, author: author)
     merged_article.comments << comments
     merged_article.save
     #self.user.articles << merged_article

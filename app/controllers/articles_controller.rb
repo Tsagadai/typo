@@ -74,8 +74,8 @@ class ArticlesController < ContentController
   
   def merge
     @base = Article.find(params[:article_id])
-    @base.merge_with(params[:merge_with])
-    redirect_to "/admin/content"
+    @merged = @base.merge_with(params[:merge_with])
+    redirect_to "/admin/content/#{@merged.id}/edit"
   end
   
   def check_password
