@@ -70,7 +70,11 @@ class ArticlesController < ContentController
     @canonical_url = ""
     render 'read'
   end
-
+  
+  def merge
+    
+  end
+  
   def check_password
     return unless request.xhr?
     @article = Article.find(params[:article][:id])

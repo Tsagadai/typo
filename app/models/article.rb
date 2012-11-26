@@ -328,7 +328,15 @@ class Article < Content
       []
     end
   end
-
+  
+  # merging articles together
+  def merge_with(other_article_id)
+    other_article = Article.find(other_article_id)
+    merged_article = Aricle.create(body: self.body + other_article .body)
+    self.user.articles << merged_article
+    self.user.save
+  end
+  
   def keywords_to_tags
     Article.transaction do
       tags.clear

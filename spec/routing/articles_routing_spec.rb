@@ -43,4 +43,9 @@ describe ArticlesController do
                                                           :from => "articles/foo/bar/baz")
     end
   end
+  it "should route to merge" do
+    { :post => "/articles/merge" }.should route_to(:controller => 'articles',
+                                                      :action => 'merge',
+                                                      :from => "articles/merge")
+  end
 end
